@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estilo Tech — Rack Servidor Miniatura</title>
+  <meta name="description" content="Miniatura de Hack Servidor em MDF com componentes 3D destacáveis. Venda direta para instituições, empresas de TI e entusiastas." />
+  <style>
+    
+    :root{
+      --blue-900:#0f1f3d;
+      --blue-800:#1e3a8a;
+      --blue-600:#2563eb;
+      --blue-100:#e6f0ff;
+      --gray-900:#0b1220;
+      --gray-700:#334155;
+      --gray-500:#64748b;
+      --gray-300:#cbd5e1;
+      --gray-200:#e2e8f0;
+      --gray-100:#f1f5f9;
+      --white:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--gray-100);color:var(--gray-900);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    .btn{display:inline-flex;gap:.5rem;align-items:center;border:0;border-radius:14px;padding:12px 18px;cursor:pointer;font-weight:700;transition:.2s ease}
+    .btn.primary{background:var(--blue-600);color:var(--white)}
+    .btn.primary:hover{filter:brightness(1.07)}
+    .btn.ghost{background:transparent;color:var(--blue-600);border:2px solid var(--blue-600)}
+    .shadow{box-shadow:0 8px 30px rgba(9,30,66,.12)}
+    /* Header */
+    header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg,var(--blue-900),#152a57);color:var(--white);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{height:38px;width:auto}
+    .nav a{opacity:.9;margin:0 10px}
+    .nav a:hover{opacity:1}
+    .cart{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);padding:8px 12px;border-radius:12px}
+    /* Hero */
+    .hero{background:linear-gradient(180deg,#e9eefb,var(--gray-100));padding:48px 0 28px;border-bottom:1px solid var(--gray-200)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .hero h1{font-size:clamp(28px,4.4vw,44px);line-height:1.15;color:var(--blue-800);margin:0 0 10px}
+    .hero p{color:var(--gray-700);margin:0 0 18px}
+    .hero-img{border-radius:18px;overflow:hidden;background:var(--white);border:1px solid var(--gray-200)}
+    .hero-img img{display:block;width:100%;height:auto}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 22px}
+    .badge{background:var(--blue-100);color:var(--blue-800);padding:8px 12px;border-radius:999px;font-weight:600;font-size:.92rem;border:1px solid #cfe1ff}
+    /* Product cards */
+    .section{padding:40px 0}
+    .section h2{font-size:clamp(22px,3.4vw,32px);margin:0 0 20px;color:var(--blue-800)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:var(--white);border:1px solid var(--gray-200);border-radius:18px;overflow:hidden}
+    .card img{width:100%;height:auto;display:block;border-bottom:1px solid var(--gray-200)}
+    .card .body{padding:16px}
+    .price{font-weight:800;color:var(--blue-800);font-size:1.25rem}
+    .meta{color:var(--gray-500);font-size:.95rem}
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .feature{background:var(--white);border:1px solid var(--gray-200);border-radius:16px;padding:16px}
+    .feature h4{margin:0 0 8px;color:var(--blue-800)}
+    /* FAQ */
+    details{background:var(--white);border:1px solid var(--gray-200);border-radius:16px;padding:14px 16px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer;font-weight:700;color:var(--blue-800)}
+    /* Footer */
+    footer{background:#0e1526;color:#d3d9e8;padding:32px 0;margin-top:20px;border-top:1px solid rgba(255,255,255,.06)}
+    .foot{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+    .foot small{opacity:.8}
+    /* Responsive */
+    @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.features{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}.features{grid-template-columns:1fr}.nav .links{display:none}}
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="racklab.png" alt="RackLab" />
+        <strong>RackLab</strong>
+      </div>
+      <nav class="links">
+        <a href="#produtos">Produtos</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="cart" id="cart">
+        <span>🛒</span>
+        <span><strong id="cartCount">0</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badges">
+          <span class="badge">Azul & Cinza</span>
+          <span class="badge">MDF + Impressão 3D</span>
+          <span class="badge">Componentes Destacáveis</span>
+        </div>
+        <h1>Rack Servidor Miniatura para Estudos e Demonstrações</h1>
+        <p>Um rack educativo em MDF com módulos 3D (switches, roteadores, hubs). Ideal para universidades, empresas de TI e entusiastas.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn primary" onclick="scrollToId('produtos')">Comprar agora</button>
+          <button class="btn ghost" onclick="scrollToId('recursos')">Ver recursos</button>
+        </div>
+      </div>
+      <div class="hero-img shadow">
+        <!-- IMAGEM DO PRODUTO GERADA POR NÓS -->
+        <img src="racklab.png" alt="Miniatura de Hack Servidor em MDF e 3D" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUTOS -->
+  <section id="produtos" class="section">
+    <div class="container">
+      <h2>Nossos modelos</h2>
+      <div class="grid">
+        <article class="card shadow">
+          <img src="rackserver.png" alt="Hack Servidor — Kit Básico" />
+          <div class="body">
+            <h3>Kit Básico</h3>
+            <p class="meta">Rack + 3 módulos (switch, roteador, patch panel).</p>
+            <p class="price">R$ 400,00</p>
+            <button class="btn primary" onclick="addToCart()">Adicionar ao carrinho</button>
+          </div>
+        </article>
+
+        <article class="card shadow">
+          <img src="SERVIDOR STORAGE.png" alt="Hack Servidor — Kit Intermediário" />
+          <div class="body">
+            <h3>Kit Intermediário</h3>
+            <p class="meta">Rack + 5 módulos. Ideal para aulas práticas.</p>
+            <p class="price">R$ 540,00</p>
+            <button class="btn primary" onclick="addToCart()">Adicionar ao carrinho</button>
+          </div>
+        </article>
+
+        <article class="card shadow">
+          <img src="firewall.png" alt="Hack Servidor — Kit Pro" />
+          <div class="body">
+            <h3>Kit Pro</h3>
+            <p class="meta">Rack + 8 módulos. Inclui hubs extras e gaveta.</p>
+            <p class="price">R$ 690,00</p>
+            <button class="btn primary" onclick="addToCart()">Adicionar ao carrinho</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECURSOS -->
+  <section id="recursos" class="section" style="background:var(--white);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200)">
+    <div class="container">
+      <h2>Recursos e diferenciais</h2>
+      <div class="features">
+        <div class="feature">
+          <h4>Componentes destacáveis</h4>
+          <p class="meta">Switches, roteadores e hubs se encaixam no rack para simular cenários.</p>
+        </div>
+        <div class="feature">
+          <h4>Construção em MDF</h4>
+          <p class="meta">Corte a laser, acabamento premium e alta durabilidade.</p>
+        </div>
+        <div class="feature">
+          <h4>Impressão 3D</h4>
+          <p class="meta">Peças em PLA/ABS com ótima definição e cores azul/cinza.</p>
+        </div>
+        <div class="feature">
+          <h4>Educação & Treinamento</h4>
+          <p class="meta">Perfeito para aulas de redes e apresentações corporativas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA (imagens geradas) -->
+  <section class="section">
+    <div class="container">
+      <h2>Galeria</h2>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="card"><img src="firewall.png" alt="Detalhe frontal do rack" /></div>
+        <div class="card"><img src="SERVIDOR STORAGE.png" alt="Módulos destacáveis" /></div>
+        <div class="card"><img src="rackserver.png" alt="Rack em MDF — perspectiva" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2>Dúvidas frequentes</h2>
+      <details>
+        <summary>Os módulos são funcionais?</summary>
+        <p>São representações didáticas (não operacionais) para ensino e demonstração.</p>
+      </details>
+      <details>
+        <summary>Consigo personalizar cores e logotipo?</summary>
+        <p>Sim, oferecemos personalização (gravação a laser e paleta em tons azul/cinza).</p>
+      </details>
+      <details>
+        <summary>Qual o prazo de produção?</summary>
+        <p>De 3 a 7 dias úteis por unidade, dependendo do kit e da fila de produção.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="section" style="background:var(--white);border-top:1px solid var(--gray-200)">
+    <div class="container">
+      <h2>Fale com a RackLab</h2>
+      <form class="card" style="padding:16px" onsubmit="event.preventDefault();alert('Mensagem enviada!');">
+        <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr">
+          <label>Nome<br/><input required type="text" placeholder="Seu nome" style="width:100%;padding:10px;border:1px solid var(--gray-300);border-radius:10px"></label>
+          <label>E-mail<br/><input required type="email" placeholder="voce@email.com" style="width:100%;padding:10px;border:1px solid var(--gray-300);border-radius:10px"></label>
+        </div>
+        <label style="display:block;margin-top:12px">Mensagem<br/>
+          <textarea required rows="4" placeholder="Como podemos ajudar?" style="width:100%;padding:10px;border:1px solid var(--gray-300);border-radius:10px"></textarea>
+        </label>
+        <div style="margin-top:14px">
+          <button class="btn primary" type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot">
+      <div class="brand">
+        <img src="racklab.png" alt="Logo Estilo Tech" />
+        <strong>RackLab</strong>
+      </div>
+      <small>© <span id="year"></span> RackLab — Todos os direitos reservados.</small>
+    </div>
+  </footer>
+
+  <script>
+    // ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // carrinho
+    let cartQty = 0;
+    const cartCountEl = document.getElementById('cartCount');
+    function addToCart(){
+      cartQty++; cartCountEl.textContent = cartQty;
+    }
+    function scrollToId(id){
+      document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  </script>
+</body>
+</html>
